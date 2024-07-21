@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
-    <h1>Text to Speech</h1>
-    <input type="text" id="textInput" placeholder="Enter text">
-    <button id="submitBtn">Generate Audio</button>
-    <audio id="audio-player" controls style="display:none;"></audio>
+    <div class="root">
+        <div class="input-container">
+            <h1>Text to Speech</h1>
+            <input type="text" id="textInput" placeholder="Enter text">
+            <button id="submitBtn">Generate Audio</button>
+            <div id="error-message" class="error"></div>
+            <div class="audio-container">
+                <audio id="audio-player" controls style="display:none;"></audio>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 

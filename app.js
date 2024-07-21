@@ -25,23 +25,19 @@ app.post('/api/text-to-speech', async (request, resp) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ text: text })
-        });
+        })
 
         if (response.ok) {
             const audioBuffer = await response.arrayBuffer();
-            resp.status(200);
-            resp.set('Content-Type', 'audio/mpeg');
-            resp.send(Buffer.from(audioBuffer));
+            resp.status(200).set('Content-Type', 'audio/mpeg').send(Buffer.from(audioBuffer));
         } else {
-            resp.status(500);
-            resp.json({ error: 'FError generating audio', details: response.statusText });
+            resp.status(500).json({ error: 'Error generating audio', details: response.statusText });
             console.error('Error generating audio:', response.statusText);
         }
 
 
     } catch (err) {
-        resp.status(500);
-        resp.json({ error: 'Error generating audio', details: err.message });
+        resp.status(500).json({ error: 'Error generating audio', details: err.message });
         console.error('Error generating audio:', err);
     }
 });
